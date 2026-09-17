@@ -1,0 +1,39 @@
+#include <stdio.h>
+int main()
+{
+    int lado, cont=0, cont1=1, bc=2, co=2;
+    
+    printf("Digite o tamanho do lado:");
+    scanf("%d", &lado);
+        
+    while(lado<1 || lado>20)
+    {
+        printf("Lado incorreto!, digite novamente:");
+        scanf("%d", &lado);
+    }
+    
+    while(cont<lado)
+    {
+        printf("*");
+        cont++;
+    }
+    
+    while(bc<lado)
+    {
+        printf("\n");
+        printf("*");
+        bc ++;
+        while(co<lado)
+        {
+            printf(" ");
+            co ++;
+            printf("*");
+        }
+        
+    }
+    while(cont1<lado)
+    {
+      printf("*");
+      cont1 ++;
+    }
+}
