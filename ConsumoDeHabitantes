@@ -1,0 +1,117 @@
+//2)	Escreva um programa que leia o número de habitantes de uma determinada cidade, o valor do kwh e, 
+//para cada habitante, entre com os dados: consumo do mês e o código do 
+//consumidor (1: residencial, 2: comercial, 3: industrial). No final, imprima o maior, o menor e a média de 
+//consumo dos habitantes
+//e a média do mês e o total de consumo de cada categoria de consumidor.
+
+#include <stdio.h>
+int main()
+{
+    int habitantes, codigo, cont=0;
+    float kwh, consumo, maior_consu, menor_consu, total_consu;
+    float media_hab, media, res_consu, ind_consu, com_consu;
+    
+    printf("\nDigite o numero total de habitantes da sua cidade:");
+    scanf("%d", &habitantes);
+    while(habitantes<1)
+    {
+        printf("\nNUMERO DE HABITANTES INVALIDO!");
+        printf("\nDigite novamente o valor de habitantes de sua cidade:");
+        scanf("%d", &habitantes);
+    }
+    
+    
+    printf("\nDigite o valor de de energia consumida:");
+    scanf("%f", &kwh);
+    if(kwh==0)
+    {
+        printf("\nEnergia local desligida ou indisponivel");
+    }
+    while(kwh<0)
+    {
+        printf("\nVALOR INVALIDO!");
+        printf("\nDigite novamente o valor de energia consumida:");
+        scanf("%f", &kwh);
+    }
+    
+    
+    while(cont<habitantes)
+    {
+        if(cont==0)
+        {
+            printf("\nInsira o valor do consumo do mes:");
+            scanf("%f", &consumo);
+        }
+        else
+        {
+            printf("\nInsira o valor do consumo do mes para o proximo habitante:");
+            scanf("%f", &consumo);
+        }
+        while(consumo<0)
+        {
+            printf("\nVALOR INSERIDO INCORRETO");
+            printf("\nInsira o valor novamente");
+            scanf("%f", &consumo);
+        }
+        
+        printf("\n|TIPO DE CONSUMIDOR|");
+        printf("\n|DIGITE 1 para residencial|");
+        printf("\n|DIGITE 2 para comercial|");
+        printf("\n|DIGITE 3 para industrial|");
+      
+        printf("\nDigite o codigo do consumidor:");
+        scanf("%d", &codigo);
+        while(codigo<1 || codigo>3)
+        {
+            printf("\nCODIGO DO CONSUMIDOR INVALIDO!");
+        
+            printf("\n|TIPO DE CONSUMIDOR|");
+            printf("\n|DIGITE 1 para residencial|");
+            printf("\n|DIGITE 2 para comercial|");
+            printf("\n|DIGITE 3 para industrial|");
+    
+            printf("\nDigite novamente o codigo do consumidor:");
+            scanf("%d", &codigo);
+        }
+        if(cont==0)
+        {
+            maior_consu=consumo;
+            menor_consu=consumo;
+        }
+        else
+        {
+            if(maior_consu>consumo)
+            {
+                menor_consu = consumo;
+            }
+            else
+            {
+                maior_consu = consumo;
+            }
+        }
+        media += consumo;
+        
+        switch(codigo)
+        {
+            case 1: printf("\nConsumidor residencial", res_consu += consumo);
+                    break;
+                    
+            case 2: printf("\nConsumidor comercial", com_consu += consumo);
+                    break;
+                    
+            case 3: printf("\nConsumidor industrial", ind_consu += consumo);
+                    break;
+        }
+        cont ++;
+    }
+    
+    media_hab = media/habitantes;
+    printf("\nMaior consumo de habitantes:%.2f", maior_consu);
+    printf("\nMenor consumo de habitantes:%.2f", menor_consu);
+    printf("\nMedia do consumo dos habitantes e do mes:%.2f", media_hab);
+    
+    printf("\nTotal de consumo da categoria residencial:%.2f", res_consu);  
+    printf("\nTotal de consumo da categoria comercial:%.2f", com_consu);
+    printf("\nTotal de consumo da categoria industrial:%.2f", ind_consu);
+    
+}
