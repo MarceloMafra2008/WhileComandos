@@ -1,0 +1,52 @@
+#include <stdio.h>
+int main()
+{
+    int cont_mes=0, sup_cont=0;
+    
+    float consumo, consu_total, maior_consu, menor_consu, media, consu_media;
+    
+    
+    while(consumo!=-1)
+    {
+        printf("\n|DIGITE -1 quando nao houver mais nenhum mes|");
+        printf("\nDigite os valores de consumo mensal:");
+        scanf("%f", &consumo);
+        if(cont_mes == 0)
+        {
+            maior_consu = consumo;
+            menor_consu = consumo;
+        }
+        else
+        {
+            if(maior_consu>consumo)
+            {
+                menor_consu=consumo;
+            }
+            else
+            {
+                maior_consu=consumo;
+            }
+        }
+        
+        if(consumo=>0)
+        {
+            consu_total += consumo;
+            cont_mes ++;
+            media += consumo;
+        }
+        else
+        {
+            printf("Valor invalidado, valores tem que ser maior ou igual a 0, ou para encerrar -1!");
+        }
+        if(consumo>500)
+        {
+            sup_cont ++;
+        }
+    }
+    
+    consu_media = media/cont_mes;
+    
+    
+    
+    
+}
