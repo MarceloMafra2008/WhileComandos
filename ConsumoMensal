@@ -1,0 +1,65 @@
+#include <stdio.h>
+int main()
+{
+    int cont_mes=0, cont_superior=0, meses;
+    float consumo, maior_consu, menor_consu, consu_total, medio;
+    
+    while(consumo!=-1)
+    {
+        
+        
+            printf("\n|DIGITE -1 para encerrar os meses!|");
+            printf("\nDigite os valores do consumo de energia para o proximo mes:");
+            scanf("%f", &consumo);   
+            
+        while(consumo<-1)
+        {
+           printf("\nDIGITE -1 para encerrar os meses");
+           printf("\n|Valor Invalido!, consumo>=0|");
+           printf("\nDigite o valor novamente:");
+           scanf("%f", &consumo);
+        }
+        
+            if(cont_mes == 0)
+            {  
+                maior_consu = consumo;
+                menor_consu = consumo;
+            }
+            else
+            {
+                if(maior_consu>consumo && consumo != -1)
+                {
+                    menor_consu = consumo;
+                }
+                else
+                {
+                    if(consumo!=-1)
+                    {
+                       maior_consu = consumo; 
+                    }
+                }
+            }
+            if(consumo != -1)
+            {
+                cont_mes ++;
+                consu_total += consumo;
+                
+                if(consumo>500)
+                {
+                    cont_superior ++;
+                }
+            }
+    }
+    
+    meses = cont_mes;
+    medio = consu_total/cont_mes;
+    printf("\n");
+    printf("\nValores superiores que 500kwh:%d", cont_superior);
+    printf("\nQuantidade de meses:%d", meses);
+    printf("\nConsumo total:%.2f", consu_total);
+    printf("\nConsumo medio mensal:%.2f", medio);
+    printf(" ");
+    printf("\n|MAIOR e MENOR consumo|");
+    printf("\nConsumo MAIOR:%.2f", maior_consu);
+    printf("\nConsumo MENOR:%.2f", menor_consu);
+}
