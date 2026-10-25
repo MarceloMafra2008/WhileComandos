@@ -1,0 +1,75 @@
+#include <stdio.h>
+int main()
+{
+    int set, cod, cont=0, cod_set;
+    int qtd_alto=0, qtd_baixo=0, qtd_normal=0;
+    float maior, menor;
+    float kwh, total, media;
+    
+    
+    printf("\nInsira a quantidade de setores:");
+    scanf("%d", &set);
+    while(set<0 || set>15)
+    {
+        printf("\nInsira a quantidade de setores novamente:");
+        scanf("%d", &set);
+    }
+    while(cont<set)
+    {
+        printf("\nInsira o codigo do setor:");
+        scanf("%d", &cod);
+        while(cod<0 || cod>15)
+        {
+            printf("\nInsira o codigo novamente:");
+            scanf("%d", &cod);
+        }
+          printf("\nInsira o consumo de energia:");
+          scanf("%f", &kwh);
+          while(kwh<0)
+          {
+             printf("\nInsira o consumo de energia novamente:");
+             scanf("%f", &kwh);
+          }
+          if(kwh<100)
+          {
+              qtd_baixo ++;
+          }
+
+          else
+          {
+              if(kwh<=500)
+              {
+                  qtd_normal ++;
+              }
+              else
+              {
+                  qtd_alto ++;
+              }
+          }
+          if(cont==0)
+          {
+              maior=kwh;
+              menor=kwh;
+          }
+          else
+          {
+              if(maior>kwh)
+              {
+                  menor=kwh;
+              }
+              else
+              {
+                  maior=kwh;
+                  cod_set=cod;
+              }
+          }
+        cont ++; 
+        total += kwh;
+    }
+    media = total/set;
+    printf("\nQtd total de set com consu baixo:%d", qtd_baixo);
+    printf("\nQtd total de set com consu normal:%d", qtd_normal);
+    printf("\nQtd total de set com consu alto:%d", qtd_alto);
+    printf("\nMaior consumo e o codgio do set: Cod[%d], Consu[%.2f]", cod_set, maior);
+    printf("\nConsumo medio dos setores analisados:%.2f", media);
+}
