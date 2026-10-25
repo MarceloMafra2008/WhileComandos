@@ -1,0 +1,51 @@
+#include <stdio.h>
+int main()
+{
+    int notas, qtd_ava=0;
+    float media, total;
+    while(notas !=0 )
+    {
+        printf("\nMENU");
+        printf("\n|Insira 1|, para MUITO INSATISFEITO");
+        printf("\n|Insira 2|, para INSATISFEITO");
+        printf("\n|Insira 3|, para INDIFERENTE");
+        printf("\n|Insira 4|, para SATISFEITO");
+        printf("\n|Insira 5|, para MUITO SATISFEITO");
+    
+        printf("\nInsira a nota de satisfacao:");
+        scanf("%d", &notas);
+        while(notas<0 || notas>5)
+        {
+            printf("Insira novamente a nota de satsifcao:");
+            scanf("%d", &notas);
+        }
+        qtd_ava ++;
+        total += notas;
+    }
+    media = total/qtd_ava;
+    printf("\nQuantidade Total de avaliacoes:%d", qtd_ava);
+    
+    if(media < 2.5)
+    {
+        printf("\nPesquisa Insatifatoria");
+    }
+    else
+    {
+        if(media <= 3.49)
+        {
+            printf("\nPesquisa regular");
+        }
+        else
+        {
+            if(media<=4.49)
+            {
+                printf("\nPesquisa Satisfatoria");
+            }
+            else
+            {
+                printf("\nPesquisa Muito Satisfatoria");
+            }
+        }
+    }
+    
+}
